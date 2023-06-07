@@ -13,7 +13,7 @@ form.addEventListener('submit', onSubmit);
 const inputForm = {};
 
 if (localStorage.getItem(STORAGE_KEY) !== '') {
-   available =  JSON.parse(localStorage.getItem(STORAGE_KEY))
+  const available =  JSON.parse(localStorage.getItem(STORAGE_KEY))
     console.log(available);
     form.elements.email.value = available.email;
     form.elements.message.value = available.message;
