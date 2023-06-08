@@ -12,9 +12,8 @@ form.addEventListener('submit', onSubmit);
 
 const inputForm = {};
 
-if (localStorage.getItem(STORAGE_KEY) !== '') {
-  const available =  JSON.parse(localStorage.getItem(STORAGE_KEY))
-    console.log(available);
+if (localStorage.getItem(STORAGE_KEY) !== null || undefined) {
+  const available = JSON.parse(localStorage.getItem(STORAGE_KEY));
     form.elements.email.value = available.email;
     form.elements.message.value = available.message;
 }
@@ -35,10 +34,11 @@ function onSubmit(event) {
   } = event.currentTarget;
 
   if (email.value === '' || message.value === '') {
-    return console.log('Please fill in all the fields!');
+    alert("Please fill in all the fields!");
+    return
   }
 
-  console.log(`{email: ${email.value}, message: ${message.value}}`);
+  console.log(JSON.parse(localStorage.getItem(STORAGE_KEY)));
   localStorage.removeItem(STORAGE_KEY);
   event.currentTarget.reset();
 }
